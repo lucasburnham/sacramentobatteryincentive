@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://sacramentobatteryincentive.com/">
 <meta name="theme-color" content="#0f766e">
 <script>
-(function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var js=d.createElement(s);js.async=true;js.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(js,f)})(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
-oaiq("init",{pixelId:"RxXCMNBMFuUL7hstTXrvD9",debug:false});
+(function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)})(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
+oaiq("init",{pixelId:"RxXCMNBMFuUL7hstTXrvD9",debug:true});
 oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_battery_incentive_landing_page",name:"SMUD Battery Incentive Landing Page",content_type:"page"}]},{event_id:"page_viewed_"+Date.now()});
 </script>
 <style>
@@ -29,7 +29,7 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_battery_incent
 <section class="disclaimer"><div class="container"><strong>Important disclaimer:</strong> Axia Solar is not SMUD and is not claiming to represent SMUD. Incentives are administered by SMUD and are subject to SMUD’s eligibility requirements, enrollment rules, approved equipment requirements, program availability, funding availability, and final approval. Axia Solar does not guarantee incentive approval, system performance, utility savings, tax outcomes, or bill elimination.</div></section>
 </main><footer><div class="container"><span>&copy; <span id="year"></span> Axia Solar Sacramento battery incentive eligibility campaign.</span><span>Free in-home consultations only.</span></div></footer>
 <script>
-const GOOGLE_APPOINTMENT_SCHEDULE_URL="https://calendar.app.google/oNAhhCBMu13PSRtc7";document.getElementById("year").textContent=new Date().getFullYear();function makeEventId(prefix){return prefix+"_"+Date.now()+"_"+Math.random().toString(36).slice(2)}function trackBookingClick(source){if(window.oaiq){oaiq("measure","custom",{type:"custom"},{custom_event_name:"calendar_booking_clicked",event_id:makeEventId(source||"calendar_booking_clicked")})}}document.querySelectorAll(".js-booking-link").forEach(function(link){link.addEventListener("click",function(){trackBookingClick("booking_link_click")})});document.getElementById("leadForm").addEventListener("submit",function(event){event.preventDefault();if(!event.currentTarget.reportValidity())return;document.getElementById("formSuccess").classList.add("show");trackBookingClick("lead_form_submit_calendar_open");window.open(GOOGLE_APPOINTMENT_SCHEDULE_URL,"_blank","noopener")});
+const GOOGLE_APPOINTMENT_SCHEDULE_URL="https://calendar.app.google/oNAhhCBMu13PSRtc7";document.getElementById("year").textContent=new Date().getFullYear();function makeEventId(prefix){return prefix+"_"+Date.now()+"_"+Math.random().toString(36).slice(2)}function trackBookingClick(source){if(window.oaiq){oaiq("measure","custom",{type:"custom"},{custom_event_name:"calendar_booking_clicked",event_id:makeEventId(source||"calendar_booking_clicked")})}}function trackRegistrationCompleted(){if(window.oaiq){oaiq("measure","registration_completed",{type:"customer_action",amount:0,currency:"USD"},{event_id:makeEventId("registration_completed")})}}document.querySelectorAll(".js-booking-link").forEach(function(link){link.addEventListener("click",function(){trackBookingClick("booking_link_click")})});document.getElementById("leadForm").addEventListener("submit",function(event){event.preventDefault();if(!event.currentTarget.reportValidity())return;document.getElementById("formSuccess").classList.add("show");trackRegistrationCompleted();trackBookingClick("lead_form_submit_calendar_open");window.open(GOOGLE_APPOINTMENT_SCHEDULE_URL,"_blank","noopener")});
 </script>
 </body>
 </html>
