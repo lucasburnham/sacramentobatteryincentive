@@ -1,0 +1,30 @@
+# Sacramento Battery Incentive
+
+Sacramento Battery Incentive is a marketing landing page for Axia by Qcells solar and battery consultations in the Sacramento, California area.
+
+The site helps Sacramento-area SMUD homeowners:
+
+- Check preliminary fit for solar plus home battery storage.
+- Understand that SMUD currently lists battery storage incentives up to $10,000 per household, subject to SMUD program rules and final approval.
+- Book a free in-home consultation with Axia by Qcells.
+
+Important distinction:
+
+Axia Solar is not SMUD and does not claim to represent SMUD. Incentives are administered by SMUD and are subject to SMUD eligibility requirements, enrollment rules, approved-equipment requirements, program and funding availability, and final approval.
+
+Primary pages:
+
+- Home: https://sacramentobatteryincentive.com/
+- Quick check: https://sacramentobatteryincentive.com/quick-check.html
+- Privacy policy: https://sacramentobatteryincentive.com/privacy-policy.html
+
+Official references:
+
+- SMUD battery storage for homeowners: https://www.smud.org/Going-Green/Battery-storage/Homeowner
+- SMUD Solar and Storage Rate: https://www.smud.org/Rate-Information/Solar-and-Storage-Rate
+- Tesla SMUD Virtual Power Plant: https://www.tesla.com/support/energy/virtual-power-plant/smud
+
+Contact:
+
+- Phone: 385-777-9692
+- Booking: https://calendar.app.google/oNAhhCBMu13PSRtc7
