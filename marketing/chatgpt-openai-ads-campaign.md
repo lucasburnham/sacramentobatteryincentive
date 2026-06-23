@@ -1,22 +1,132 @@
-# ChatGPT / OpenAI Ads Campaign Brief
+# ChatGPT / OpenAI Ads Campaign Plan
 
 ## Goal
 
-Drive Sacramento-area SMUD homeowners from high-intent battery and solar questions into calendar bookings for a free Axia by Qcells in-home consultation.
+Turn Sacramento-area SMUD homeowner interest into free in-home solar plus battery appointments for Axia by Qcells.
 
 Primary conversion: `calendar_booking_clicked`
 
-Secondary conversions: `quick_check_clicked`, `qualification_started`, `qualification_completed`, `phone_call_clicked`
+Secondary signals: `quick_check_clicked`, `qualification_started`, `qualification_completed`, `phone_call_clicked`
 
-## Landing URLs
+## Live Site Integration
 
-Use the homepage for education-first traffic:
+The homepage now supports customer-facing ad messages through the `message` URL parameter:
 
-`https://sacramentobatteryincentive.com/?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=incentive_homepage`
+- `message=incentive` keeps the page focused on SMUD battery incentive options.
+- `message=backup` shifts the hero copy toward battery backup and outage planning.
+- `message=existing_solar` speaks to homeowners who already have solar.
+- `message=appointment` makes the page appointment-first.
+- `message=no_contact` emphasizes the no-contact quick check.
 
-Use the quick check for high-intent traffic:
+The homepage also carries current UTM parameters into the quick-check link so page visits, quick-check starts, quick-check completions, booking clicks, and phone clicks can be compared by ad variant.
 
-`https://sacramentobatteryincentive.com/quick-check.html?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=quick_check`
+## Week 1 Launch Tests
+
+Run four starter ads: two to the quick check and two to the homepage.
+
+### A. Incentive Fit
+
+Headline: Check Your SMUD Battery Incentive Options
+
+Description: Sacramento-area homeowner? Check whether solar plus battery storage is worth a closer look, then book a free Axia by Qcells home visit.
+
+URL:
+
+`https://sacramentobatteryincentive.com/quick-check.html?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=week1_quick_check_incentive&message=incentive`
+
+### B. Up to $10,000
+
+Headline: SMUD Battery Incentives May Reach $10,000
+
+Description: SMUD currently lists battery incentives up to $10,000 per household, subject to program rules. Review options with Axia by Qcells.
+
+URL:
+
+`https://sacramentobatteryincentive.com/?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=week1_homepage_incentive&message=incentive`
+
+### C. No-Contact Quick Check
+
+Headline: 2-Minute Solar + Battery Check
+
+Description: Check solar plus battery fit before sharing your name, phone, or email. Book a free visit only if the result looks useful.
+
+URL:
+
+`https://sacramentobatteryincentive.com/quick-check.html?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=week1_quick_check_no_contact&message=no_contact`
+
+### D. Backup Power
+
+Headline: Plan Battery Backup for Your SMUD Home
+
+Description: Review solar panels, battery backup, outage priorities, and current SMUD program details in a free in-home visit.
+
+URL:
+
+`https://sacramentobatteryincentive.com/?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=week1_homepage_backup&message=backup`
+
+## Week 1 Decision Rules
+
+Keep each test running long enough to compare:
+
+- Booking-click rate from page visit.
+- Quick-check start rate.
+- Quick-check completion rate.
+- Phone-click rate.
+- Any visible appointment quality differences in Google Calendar.
+
+Early read:
+
+- If quick-check completions are strong but bookings are weak, make the result page more direct.
+- If homepage booking clicks beat quick-check booking clicks, move more budget to appointment-first homepage traffic.
+- If backup-power copy brings stronger booking clicks, make backup the Week 2 control.
+
+## Week 2 Tests
+
+Use the strongest Week 1 path as the control. Test one change at a time.
+
+### Timing Message
+
+Headline: Check Battery Incentive Timing
+
+Description: SMUD program timing matters. Review your solar plus battery options before you choose equipment or installation timing.
+
+URL:
+
+`https://sacramentobatteryincentive.com/?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=week2_timing_incentive&message=incentive`
+
+### Appointment-First Message
+
+Headline: Book a Free SMUD-Focused Home Visit
+
+Description: Bring a recent SMUD bill. Axia by Qcells will review solar, battery backup, and incentive questions for your home.
+
+URL:
+
+`https://sacramentobatteryincentive.com/?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=week2_appointment_first&message=appointment`
+
+## Week 3 Tests
+
+Use Week 3 to separate existing-solar owners from new-solar shoppers.
+
+### Existing Solar Owners
+
+Headline: Already Have Solar? Check Battery Options
+
+Description: Review storage options, SMUD rate details, and battery incentive timing for a home that already has solar panels.
+
+URL:
+
+`https://sacramentobatteryincentive.com/?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=week3_existing_solar&message=existing_solar`
+
+### New Solar Plus Battery
+
+Headline: Solar Panels Plus Battery Storage for SMUD Homes
+
+Description: Compare rooftop solar, battery storage, backup needs, and current SMUD program details in a free home visit.
+
+URL:
+
+`https://sacramentobatteryincentive.com/quick-check.html?utm_source=chatgpt&utm_medium=paid_ai&utm_campaign=smud_battery_booking&utm_content=week3_new_solar_battery&message=incentive`
 
 ## Audience Intent Clusters
 
@@ -30,71 +140,23 @@ Use the quick check for high-intent traffic:
    - "Powerwall for SMUD outage protection"
    - "Best home battery for solar in Sacramento"
 
-3. Solar plus battery comparison shoppers
+3. Solar plus battery shoppers
    - "Should I add battery storage to solar?"
    - "Sacramento solar battery quote"
    - "SMUD solar and storage rate"
 
 4. Existing solar owners
    - "Can I add a battery to my existing solar?"
-   - "SMUD NEM battery storage incentive"
-   - "Solar battery incentive after PTO"
+   - "SMUD battery storage incentive after PTO"
+   - "Battery storage for existing solar Sacramento"
 
-## Core Positioning
+## Audience Exclusions
 
-Lead with a low-friction check, not a hard sales pitch:
-
-"SMUD homeowners may have a meaningful battery incentive window. Check fit in 2 minutes, then book a free in-home review if the result looks promising."
-
-## Ad Copy Variations
-
-### Variant A: Incentive Fit
-
-Headline: Check Your SMUD Battery Incentive Fit
-
-Description: Sacramento-area homeowner? See if solar plus battery storage is worth a closer review, then book a free in-home consultation.
-
-Landing page: quick check
-
-### Variant B: Up to $10,000
-
-Headline: SMUD Battery Incentives May Reach $10,000
-
-Description: Check program fit, timing, and battery goals before you choose a solar plus storage plan. Free Axia by Qcells consultation.
-
-Landing page: homepage
-
-### Variant C: No Contact Quick Check
-
-Headline: 2-Minute Solar + Battery Check
-
-Description: No name, phone, or email required for the preliminary result. Book a free home visit only if the result makes sense.
-
-Landing page: quick check
-
-### Variant D: Backup Power
-
-Headline: Plan Backup Power for Your Sacramento Home
-
-Description: Compare solar plus battery options around your SMUD bill, outage priorities, and available battery-program rules.
-
-Landing page: homepage
-
-### Variant E: Existing Solar
-
-Headline: Already Have Solar? Check Battery Fit
-
-Description: Existing solar owners may have different incentive and rate considerations. Review options with a Sacramento-area specialist.
-
-Landing page: quick check
-
-### Variant F: Appointment First
-
-Headline: Book a Free SMUD-Focused Home Review
-
-Description: Bring your recent SMUD bill. Get clear answers on solar, battery storage, backup goals, and incentive timing.
-
-Landing page: homepage
+- Renters without homeowner involvement.
+- Non-SMUD utility searches unless conquesting is intentional.
+- DIY-only battery installation intent.
+- Commercial battery storage intent.
+- Research-only queries that include "jobs," "wholesale," "datasheet," "manual," or "stock price."
 
 ## Compliance Notes
 
@@ -106,56 +168,7 @@ Landing page: homepage
   - Tesla SMUD Powerwall page: https://www.tesla.com/support/energy/virtual-power-plant/smud
   - SMUD Solar and Storage Rate page: https://www.smud.org/Rate-Information/Solar-and-Storage-Rate
 
-## Suggested Campaign Setup
-
-Campaign name: `SMUD Battery Incentive - Calendar Bookings`
-
-Objective: lead / booking conversion
-
-Primary URL: quick check
-
-Secondary URL: homepage
-
-Geography: Sacramento County and nearby SMUD-service-area ZIP codes
-
-Audience exclusions:
-- Renters without homeowner involvement
-- Non-SMUD utility searches unless conquesting is intentional
-- DIY-only battery installation intent
-- Commercial battery storage intent
-
-## Tracking Events To Use
-
-The website now emits these OpenAI Ads pixel events:
-
-- `page_viewed`
-- `quick_check_clicked`
-- `qualification_started`
-- `qualification_step_1_completed`
-- `qualification_step_2_completed`
-- `qualification_completed`
-- `calendar_booking_clicked`
-- `phone_call_clicked`
-
-Optimize initially around `calendar_booking_clicked`. If volume is too low, optimize to `qualification_completed` for learning and use calendar clicks as the quality signal.
-
-## Testing Plan
-
-Week 1:
-- Run Variant A and Variant C to the quick check.
-- Run Variant B and Variant D to the homepage.
-- Compare quick-check completion rate, booking-click rate, and phone-click rate.
-
-Week 2:
-- Keep the highest booking-click-rate page.
-- Test urgency copy around the 90-day PTO window against a safer general incentive check message.
-- Watch for low-quality clicks from non-homeowners and adjust exclusions.
-
-Week 3:
-- Add existing-solar owner copy if quick-check data shows meaningful "Yes, I have solar" volume.
-- If calendar clicks are strong but bookings are not appearing, simplify the Google Calendar intake questions and verify the calendar page loads quickly on mobile.
-
-## Recommended Calendar Intake
+## Calendar Intake
 
 Keep scheduling questions short:
 
@@ -167,4 +180,4 @@ Keep scheduling questions short:
 6. Average monthly electric bill
 7. Existing solar? Yes / No / Not sure
 
-Avoid asking for too much technical detail before the visitor chooses a time.
+Avoid technical questions until after the homeowner has selected a time.

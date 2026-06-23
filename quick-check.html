@@ -4,13 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>2-Minute SMUD Solar + Battery Fit Check | Axia by Qcells</title>
-<meta name="description" content="Complete a quick preliminary SMUD solar and battery fit check without sharing contact information, then schedule a free in-home consultation.">
+<meta name="description" content="Check whether solar plus battery storage is worth a closer look for your SMUD home, without sharing contact information first.">
 <link rel="canonical" href="https://sacramentobatteryincentive.com/quick-check.html">
 <meta name="theme-color" content="#0f766e">
 <script>
 (function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)})(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
 oaiq("init",{pixelId:"RxXCMNBMFuUL7hstTXrvD9",debug:false});
-oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check",name:"SMUD Solar and Battery Quick Check",content_type:"page"}]},{event_id:"quick_check_page_"+Date.now()});
+var params=new URLSearchParams(location.search);
+var rawVariant=(params.get("message")||params.get("utm_content")||"default").toLowerCase();
+var adVariant=rawVariant.replace(/[^a-z0-9_]+/g,"_").slice(0,48)||"default";
+window.sbiVariant=adVariant;
+oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+adVariant,name:"SMUD Solar and Battery Quick Check - "+adVariant,content_type:"page"}]},{event_id:"quick_check_page_"+adVariant+"_"+Date.now()});
 </script>
 <style>
 :root{--ink:#102033;--muted:#586879;--line:#d9e5e6;--teal:#0f766e;--teal-dark:#0a5f59;--blue:#1455e6;--blue-soft:#eef3ff;--green:#16895a;--gold:#f5b841;--gold-soft:#fff4cf;--dark:#071421;--shadow:0 18px 46px rgba(16,32,51,.12);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#f7fafb;line-height:1.55}.container{width:min(1060px,calc(100% - 32px));margin:auto}.topbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}.brand img{display:block;width:116px;height:auto}.nav-actions{display:flex;align-items:center;gap:14px}.nav-actions a{color:var(--teal);font-weight:850;text-decoration:none}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:13px 20px;border:0;border-radius:999px;background:var(--teal);color:#fff!important;font-weight:900;text-decoration:none;cursor:pointer;box-shadow:0 12px 28px rgba(15,118,110,.22)}.btn:hover{background:var(--teal-dark)}.btn.secondary{background:#fff;color:var(--teal)!important;border:1px solid var(--line);box-shadow:none}.intro{text-align:center;padding:48px 0 24px}.eyebrow{display:inline-flex;padding:7px 12px;border-radius:999px;background:rgba(15,118,110,.11);color:var(--teal-dark);font-weight:900;font-size:.88rem}.intro h1{margin:16px auto 0;font-size:4rem;line-height:1.05;letter-spacing:0;max-width:820px}.intro p{max-width:720px;margin:16px auto 0;color:var(--muted);font-size:1.08rem}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:900px;margin:0 auto 28px}.help-card{appearance:none;text-align:left;border:1px solid #e3e8ed;border-radius:8px;background:#fff;padding:22px;min-height:150px;cursor:pointer;transition:.18s ease;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);text-decoration:none;box-shadow:0 10px 30px rgba(16,32,51,.06)}.help-card:hover{transform:translateY(-2px);border-color:#a8c0ff;box-shadow:0 16px 40px rgba(20,85,230,.1)}.help-card strong{font-size:1.25rem}.help-card span{color:var(--muted)}.help-icon{width:54px;height:54px;border-radius:8px;background:var(--blue-soft);display:grid;place-items:center;color:var(--blue);font-weight:950;font-size:1.25rem}.shell{max-width:920px;margin:0 auto 64px;border:1px solid var(--line);border-radius:8px;background:#fff;box-shadow:var(--shadow);overflow:hidden}.shell-top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 26px;border-bottom:1px solid var(--line);background:#fbfcfe}.progress{display:flex;gap:8px}.dot{width:34px;height:34px;border-radius:8px;background:#edf1f5;color:#8290a0;display:grid;place-items:center;font-weight:900}.dot.active{background:var(--blue-soft);color:var(--blue)}.dot.done{background:#dff6ec;color:var(--green)}.body{padding:34px 34px 26px}.step{display:none}.step.active{display:block}.kicker{display:flex;align-items:center;gap:10px;margin-bottom:16px}.badge{background:var(--blue-soft);color:var(--blue);padding:7px 12px;border-radius:8px;font-weight:900}.step h2{margin:0 0 10px;font-size:2.5rem;line-height:1.08;letter-spacing:0}.step>p{margin:0 0 24px;color:var(--muted)}.field{display:grid;gap:8px;margin-bottom:20px;font-weight:850}.field small{color:var(--muted);font-weight:650}.field input{width:100%;min-height:56px;padding:14px 16px;border:1px solid #bcc7d2;border-radius:8px;font:inherit}.field input:focus{outline:3px solid rgba(20,85,230,.15);border-color:var(--blue)}.question{font-weight:900;margin:22px 0 10px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choices.two{grid-template-columns:repeat(2,1fr)}.choice{appearance:none;border:1px solid #cad3dc;border-radius:8px;background:#fff;padding:15px 14px;font:inherit;font-weight:800;color:#304154;cursor:pointer;min-height:56px}.choice.selected{border-color:var(--blue);background:var(--blue-soft);color:var(--blue);box-shadow:0 0 0 2px rgba(20,85,230,.08)}.bill-display{text-align:center;font-size:3rem;font-weight:950;color:var(--blue);margin:18px 0}.bill-range{width:100%;accent-color:var(--blue)}.range-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem}.error{display:none;margin-top:16px;padding:11px 13px;border-radius:8px;background:#fff0ed;color:#a43c2f;font-weight:750}.error.show{display:block}.controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;border-top:1px solid var(--line);background:#fbfcfe}.back{border:0;background:none;color:var(--blue);font:inherit;font-weight:900;cursor:pointer;padding:10px}.next{border:0;border-radius:8px;background:var(--blue);color:#fff;padding:13px 26px;font:inherit;font-weight:900;cursor:pointer;min-width:150px}.result{border:1px solid #bce6d2;background:#f1fbf6;border-radius:8px;padding:24px;margin:20px 0}.result.possible{border-color:#cbd7fb;background:#f3f6ff}.result.limited{border-color:#f0d7a6;background:#fff9ee}.result strong{display:block;font-size:1.45rem;margin-bottom:8px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.summary div{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff}.summary span{display:block;color:var(--muted);font-size:.84rem}.actions{display:flex;gap:12px;flex-wrap:wrap}.note{font-size:.9rem;color:var(--muted);margin-top:14px}.prep{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.prep div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px}.prep strong{display:block;margin-bottom:5px}.prep span{color:var(--muted);font-size:.92rem}.footer{padding:24px 0;background:#071421;color:rgba(255,255,255,.72)}.footer a{color:#fff}@media(max-width:820px){.intro h1{font-size:2.7rem}.help-grid,.summary,.prep{grid-template-columns:1fr}.choices,.choices.two{grid-template-columns:1fr}.body{padding:26px 18px 20px}.shell-top,.controls{padding:16px 18px}.controls{flex-direction:column-reverse}.back,.next{width:100%}.nav-actions>a:not(.btn){display:none}.btn{width:100%}.nav .btn{width:auto}}
@@ -22,7 +26,7 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check",n
     <a class="brand" href="/" aria-label="Return to home"><img src="/axia%20logo.png?v=5" alt="Axia by Qcells logo"></a>
     <div class="nav-actions">
       <a href="/">Main page</a>
-      <a class="btn booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="nav_book">Book consultation</a>
+      <a class="btn booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="nav_book">Book a free visit</a>
     </div>
   </div>
 </header>
@@ -31,23 +35,23 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check",n
     <div class="container">
       <span class="eyebrow">No contact info required</span>
       <h1>Check your solar plus battery fit in 2 minutes.</h1>
-      <p>Answer a few high-signal questions. If the result looks promising, you can go straight to available consultation times.</p>
+      <p>Answer a few simple questions. If it looks worth exploring, you can choose a free in-home visit.</p>
     </div>
   </section>
   <div class="container">
     <div class="help-grid">
       <button class="help-card" id="startCheck" type="button">
-        <span><strong>Start the quick check</strong><br><span>See a preliminary fit result before sharing contact information.</span></span>
+        <span><strong>Start the quick check</strong><br><span>Get a first look before sharing contact information.</span></span>
         <span class="help-icon">01</span>
       </button>
       <a class="help-card booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="top_direct_book">
-        <span><strong>Skip to calendar booking</strong><br><span>Choose a free in-home consultation time now.</span></span>
+        <span><strong>Skip to free visit</strong><br><span>Choose an in-home visit now.</span></span>
         <span class="help-icon">02</span>
       </a>
     </div>
     <section class="shell" id="check">
       <div class="shell-top">
-        <strong>Preliminary SMUD solar + battery screen</strong>
+        <strong>SMUD solar + battery quick check</strong>
         <div class="progress" aria-label="Progress">
           <span class="dot active" data-progress="1">1</span>
           <span class="dot" data-progress="2">2</span>
@@ -58,8 +62,8 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check",n
         <div class="step active" data-step="1">
           <div class="kicker"><span class="badge">STEP 1</span><strong>Property basics</strong></div>
           <h2>Is this a SMUD homeowner project?</h2>
-          <p>This first screen keeps the highest-friction details optional until you decide whether the result is worth a consultation.</p>
-          <label class="field">ZIP code or city <small>Optional, but helpful for the consultation.</small><input id="location" autocomplete="postal-code" placeholder="Example: 95831 or Sacramento"></label>
+          <p>Start with the basics. You can book a visit after you see the result.</p>
+          <label class="field">ZIP code or city <small>Optional, but helpful for the home visit.</small><input id="location" autocomplete="postal-code" placeholder="Example: 95831 or Sacramento"></label>
           <div class="question">Are you the homeowner?</div>
           <div class="choices two">
             <button class="choice" type="button" data-group="homeowner" data-value="Yes">Yes, I own the home</button>
@@ -75,7 +79,7 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check",n
         <div class="step" data-step="2">
           <div class="kicker"><span class="badge">STEP 2</span><strong>Energy and battery goals</strong></div>
           <h2>What is your average monthly electricity bill?</h2>
-          <p>Higher bills, peak-hour usage, backup-power needs, and battery program timing can all affect whether a consultation is worthwhile.</p>
+          <p>Your bill, current solar, and backup goals help shape the next step.</p>
           <div class="bill-display" id="billDisplay">$200</div>
           <input class="bill-range" id="billRange" type="range" min="50" max="800" step="25" value="200">
           <div class="range-labels"><span>$50</span><span>$800+</span></div>
@@ -93,11 +97,11 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check",n
           </div>
         </div>
         <div class="step" data-step="3">
-          <div class="kicker"><span class="badge">STEP 3</span><strong>Your preliminary result</strong></div>
-          <h2 id="resultHeading">Your home may be worth a closer review.</h2>
+          <div class="kicker"><span class="badge">STEP 3</span><strong>Your result</strong></div>
+          <h2 id="resultHeading">Your home may be worth a closer look.</h2>
           <div class="result" id="result">
-            <strong id="resultTitle">Potential fit</strong>
-            <span id="resultText">Based on your answers, a personalized in-home consultation may help confirm available options.</span>
+            <strong id="resultTitle">Worth checking</strong>
+            <span id="resultText">Based on your answers, a free in-home visit may help confirm your options.</span>
           </div>
           <div class="summary">
             <div><span>Utility</span><b id="summaryUtility">-</b></div>
@@ -106,15 +110,15 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check",n
             <div><span>Main goal</span><b id="summaryInterest">-</b></div>
           </div>
           <div class="actions">
-            <a class="btn booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="result_book">Choose my consultation time</a>
+            <a class="btn booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="result_book">Choose my visit time</a>
             <a class="btn secondary phone-link" href="tel:+13857779692" data-track="result_phone">Call 385-777-9692</a>
           </div>
-          <div class="prep" aria-label="Consultation preparation">
+          <div class="prep" aria-label="Visit preparation">
             <div><strong>Bring</strong><span>A recent SMUD bill or online account access.</span></div>
             <div><strong>Discuss</strong><span>Backup loads, evening use, and outage priorities.</span></div>
             <div><strong>Confirm</strong><span>Program fit, equipment options, and next steps.</span></div>
           </div>
-          <p class="note">This is a preliminary screen only. Incentive eligibility, system design, savings, and approval must be confirmed through the applicable program and property review. Axia Solar is not SMUD and does not claim to represent SMUD.</p>
+          <p class="note">This quick check is not a final approval. Incentives, system design, savings, and program eligibility must be confirmed through the applicable program and property review. Axia Solar is not SMUD and does not claim to represent SMUD.</p>
         </div>
         <div class="error" id="error">Please complete the required selections before continuing.</div>
       </div>
@@ -125,18 +129,18 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check",n
     </section>
   </div>
 </main>
-<footer class="footer"><div class="container">Sacramento Battery Incentive campaign · <a href="privacy-policy.html">Privacy Policy</a> · <a href="/">Main page</a></div></footer>
+<footer class="footer"><div class="container">Sacramento Battery Incentive · <a href="privacy-policy.html">Privacy Policy</a> · <a href="/">Main page</a></div></footer>
 <script>
 function eventId(n){return n+"_"+Date.now()+"_"+Math.random().toString(36).slice(2)}
 function safeEventPart(value){return String(value||"").replace(/[^a-zA-Z0-9_]+/g,"_").slice(0,48)}
-function track(n,source,result){if(window.oaiq)oaiq("measure","custom",{type:"custom"},{custom_event_name:n,event_id:eventId(n+"_"+safeEventPart(source)+"_"+safeEventPart(result))})}
+function track(n,source,result){if(window.oaiq)oaiq("measure","custom",{type:"custom"},{custom_event_name:n,event_id:eventId(n+"_"+safeEventPart(window.sbiVariant)+"_"+safeEventPart(source)+"_"+safeEventPart(result))})}
 document.querySelectorAll(".booking-link").forEach(a=>a.addEventListener("click",()=>track("calendar_booking_clicked",a.dataset.track||"booking_link",state.resultType)));
 document.querySelectorAll(".phone-link").forEach(a=>a.addEventListener("click",()=>track("phone_call_clicked",a.dataset.track||"phone_link",state.resultType)));
 const state={step:1,location:"",homeowner:"",utility:"",bill:200,solar:"",interest:"",complete:false,resultType:""};
 const steps=[...document.querySelectorAll(".step")],dots=[...document.querySelectorAll(".dot")],back=document.getElementById("back"),next=document.getElementById("next"),error=document.getElementById("error"),locationField=document.getElementById("location"),range=document.getElementById("billRange"),display=document.getElementById("billDisplay");
 function show(s){state.step=s;steps.forEach(el=>el.classList.toggle("active",+el.dataset.step===s));dots.forEach(el=>{const n=+el.dataset.progress;el.classList.toggle("active",n===s);el.classList.toggle("done",n<s)});back.hidden=s===1;next.hidden=s===3;error.classList.remove("show");document.getElementById("check").scrollIntoView({behavior:"smooth",block:"start"});if(s===3){render();if(!state.complete){state.complete=true;sessionStorage.setItem("smudQualification",JSON.stringify(state));track("qualification_completed","quick_check",state.resultType)}}}
 function valid(){state.location=locationField.value.trim();if(state.step===1)return!!(state.homeowner&&state.utility);if(state.step===2)return!!(state.solar&&state.interest);return true}
-function render(){const card=document.getElementById("result");const strong=state.homeowner==="Yes"&&state.utility==="Yes"&&state.bill>=150;const verify=state.homeowner==="Yes"&&state.utility==="Not sure";const limited=state.homeowner==="No"||state.utility==="No";card.className="result";let title="Potential fit";let heading="Your home may be worth a closer review.";let text="Based on your answers, a personalized in-home consultation may help confirm available options.";state.resultType="possible";if(strong){title="Strong preliminary fit";heading="This looks like a strong reason to book a home review.";text="SMUD service, homeownership, and your reported bill suggest solar plus battery storage may be worth a property-specific consultation.";state.resultType="strong"}else if(verify){card.classList.add("possible");title="Worth verifying SMUD service";heading="A quick consultation can confirm the utility and program fit.";text="If the home is in SMUD territory, your answers may justify reviewing solar plus battery options and incentive timing.";state.resultType="verify_utility"}else if(limited){card.classList.add("limited");title="Eligibility may be limited";heading="Your answers may require a closer eligibility review.";text="Some program or ownership requirements may limit available options, but a short call can clarify what applies to the property.";state.resultType="limited"}else{card.classList.add("possible")}document.getElementById("resultTitle").textContent=title;document.getElementById("resultHeading").textContent=heading;document.getElementById("resultText").textContent=text;document.getElementById("summaryUtility").textContent=state.utility;document.getElementById("summaryBill").textContent="$"+state.bill+"/mo";document.getElementById("summarySolar").textContent=state.solar;document.getElementById("summaryInterest").textContent=state.interest}
+function render(){const card=document.getElementById("result");const strong=state.homeowner==="Yes"&&state.utility==="Yes"&&state.bill>=150;const verify=state.homeowner==="Yes"&&state.utility==="Not sure";const limited=state.homeowner==="No"||state.utility==="No";card.className="result";let title="Worth checking";let heading="Your home may be worth a closer look.";let text="Based on your answers, a free in-home visit may help confirm your options.";state.resultType="possible";if(strong){title="Looks worth reviewing";heading="This looks like a good reason to book a home visit.";text="SMUD service, homeownership, and your bill range suggest solar plus battery storage may be worth a property-specific review.";state.resultType="strong"}else if(verify){card.classList.add("possible");title="Confirm the utility first";heading="A short review can confirm whether SMUD rules apply.";text="If the home is in SMUD territory, it may be worth reviewing solar, battery, and incentive timing.";state.resultType="verify_utility"}else if(limited){card.classList.add("limited");title="A quick call may help";heading="Some answers may limit available options.";text="Ownership or utility details may affect what is available, but a short call can clarify what applies to the property.";state.resultType="limited"}else{card.classList.add("possible")}document.getElementById("resultTitle").textContent=title;document.getElementById("resultHeading").textContent=heading;document.getElementById("resultText").textContent=text;document.getElementById("summaryUtility").textContent=state.utility;document.getElementById("summaryBill").textContent="$"+state.bill+"/mo";document.getElementById("summarySolar").textContent=state.solar;document.getElementById("summaryInterest").textContent=state.interest}
 document.querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{const g=b.dataset.group;document.querySelectorAll('.choice[data-group="'+g+'"]').forEach(x=>x.classList.remove("selected"));b.classList.add("selected");state[g]=b.dataset.value;error.classList.remove("show")}));
 range.addEventListener("input",()=>{state.bill=+range.value;display.textContent="$"+state.bill});
 next.addEventListener("click",()=>{if(!valid()){error.classList.add("show");return}track("qualification_step_"+state.step+"_completed","quick_check");show(state.step+1)});
