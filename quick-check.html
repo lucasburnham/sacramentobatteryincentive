@@ -16,11 +16,46 @@ var adVariant=rawVariant.replace(/[^a-z0-9_]+/g,"_").slice(0,48)||"default";
 window.sbiVariant=adVariant;
 oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+adVariant,name:"SMUD Solar and Battery Quick Check - "+adVariant,content_type:"page"}]},{event_id:"quick_check_page_"+adVariant+"_"+Date.now()});
 </script>
+<script data-sbi-meta-pixel>
+(function(){
+  var pixelId = window.SBI_META_PIXEL_ID || "1709029086421401";
+  window.sbiMetaPixelId = pixelId;
+  window.sbiMetaEventId = function(prefix) {
+    return prefix + "_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+  };
+  if (!pixelId || pixelId === "META_PIXEL_ID") {
+    console.warn("Replace META_PIXEL_ID with the Meta Pixel ID before publishing ads.");
+    return;
+  }
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,"script",
+  "https://connect.facebook.net/en_US/fbevents.js");
+  fbq("init", pixelId);
+  fbq("track", "PageView");
+})();
+</script>
+<script data-sbi-meta-view-content>
+(function(){
+  if (!window.fbq || window.sbiMetaPixelId === "META_PIXEL_ID") return;
+  var variant = window.sbiVariant || "default";
+  fbq("track", "ViewContent", {
+    content_category: "SMUD battery quick check",
+    content_name: "SMUD Battery Quick Check",
+    variant: variant
+  }, {eventID: window.sbiMetaEventId("meta_viewcontent_" + variant)});
+})();
+</script>
 <style>
 :root{--ink:#102033;--muted:#586879;--line:#d9e5e6;--teal:#0f766e;--teal-dark:#0a5f59;--blue:#1455e6;--blue-soft:#eef3ff;--green:#16895a;--gold:#f5b841;--gold-soft:#fff4cf;--dark:#071421;--shadow:0 18px 46px rgba(16,32,51,.12);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#f7fafb;line-height:1.55}.container{width:min(1060px,calc(100% - 32px));margin:auto}.topbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}.brand img{display:block;width:116px;height:auto}.nav-actions{display:flex;align-items:center;gap:14px}.nav-actions a{color:var(--teal);font-weight:850;text-decoration:none}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:13px 20px;border:0;border-radius:999px;background:var(--teal);color:#fff!important;font-weight:900;text-decoration:none;cursor:pointer;box-shadow:0 12px 28px rgba(15,118,110,.22)}.btn:hover{background:var(--teal-dark)}.btn.secondary{background:#fff;color:var(--teal)!important;border:1px solid var(--line);box-shadow:none}.intro{text-align:center;padding:48px 0 24px}.eyebrow{display:inline-flex;padding:7px 12px;border-radius:999px;background:rgba(15,118,110,.11);color:var(--teal-dark);font-weight:900;font-size:.88rem}.intro h1{margin:16px auto 0;font-size:4rem;line-height:1.05;letter-spacing:0;max-width:820px}.intro p{max-width:720px;margin:16px auto 0;color:var(--muted);font-size:1.08rem}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:900px;margin:0 auto 28px}.help-card{appearance:none;text-align:left;border:1px solid #e3e8ed;border-radius:8px;background:#fff;padding:22px;min-height:150px;cursor:pointer;transition:.18s ease;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);text-decoration:none;box-shadow:0 10px 30px rgba(16,32,51,.06)}.help-card:hover{transform:translateY(-2px);border-color:#a8c0ff;box-shadow:0 16px 40px rgba(20,85,230,.1)}.help-card strong{font-size:1.25rem}.help-card span{color:var(--muted)}.help-icon{width:54px;height:54px;border-radius:8px;background:var(--blue-soft);display:grid;place-items:center;color:var(--blue);font-weight:950;font-size:1.25rem}.shell{max-width:920px;margin:0 auto 64px;border:1px solid var(--line);border-radius:8px;background:#fff;box-shadow:var(--shadow);overflow:hidden}.shell-top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 26px;border-bottom:1px solid var(--line);background:#fbfcfe}.progress{display:flex;gap:8px}.dot{width:34px;height:34px;border-radius:8px;background:#edf1f5;color:#8290a0;display:grid;place-items:center;font-weight:900}.dot.active{background:var(--blue-soft);color:var(--blue)}.dot.done{background:#dff6ec;color:var(--green)}.body{padding:34px 34px 26px}.step{display:none}.step.active{display:block}.kicker{display:flex;align-items:center;gap:10px;margin-bottom:16px}.badge{background:var(--blue-soft);color:var(--blue);padding:7px 12px;border-radius:8px;font-weight:900}.step h2{margin:0 0 10px;font-size:2.5rem;line-height:1.08;letter-spacing:0}.step>p{margin:0 0 24px;color:var(--muted)}.field{display:grid;gap:8px;margin-bottom:20px;font-weight:850}.field small{color:var(--muted);font-weight:650}.field input{width:100%;min-height:56px;padding:14px 16px;border:1px solid #bcc7d2;border-radius:8px;font:inherit}.field input:focus{outline:3px solid rgba(20,85,230,.15);border-color:var(--blue)}.question{font-weight:900;margin:22px 0 10px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choices.two{grid-template-columns:repeat(2,1fr)}.choice{appearance:none;border:1px solid #cad3dc;border-radius:8px;background:#fff;padding:15px 14px;font:inherit;font-weight:800;color:#304154;cursor:pointer;min-height:56px}.choice.selected{border-color:var(--blue);background:var(--blue-soft);color:var(--blue);box-shadow:0 0 0 2px rgba(20,85,230,.08)}.bill-display{text-align:center;font-size:3rem;font-weight:950;color:var(--blue);margin:18px 0}.bill-range{width:100%;accent-color:var(--blue)}.range-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem}.error{display:none;margin-top:16px;padding:11px 13px;border-radius:8px;background:#fff0ed;color:#a43c2f;font-weight:750}.error.show{display:block}.controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;border-top:1px solid var(--line);background:#fbfcfe}.back{border:0;background:none;color:var(--blue);font:inherit;font-weight:900;cursor:pointer;padding:10px}.next{border:0;border-radius:8px;background:var(--blue);color:#fff;padding:13px 26px;font:inherit;font-weight:900;cursor:pointer;min-width:150px}.result{border:1px solid #bce6d2;background:#f1fbf6;border-radius:8px;padding:24px;margin:20px 0}.result.possible{border-color:#cbd7fb;background:#f3f6ff}.result.limited{border-color:#f0d7a6;background:#fff9ee}.result strong{display:block;font-size:1.45rem;margin-bottom:8px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.summary div{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff}.summary span{display:block;color:var(--muted);font-size:.84rem}.actions{display:flex;gap:12px;flex-wrap:wrap}.note{font-size:.9rem;color:var(--muted);margin-top:14px}.prep{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.prep div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px}.prep strong{display:block;margin-bottom:5px}.prep span{color:var(--muted);font-size:.92rem}.footer{padding:24px 0;background:#071421;color:rgba(255,255,255,.72)}.footer a{color:#fff}@media(max-width:820px){.intro h1{font-size:2.7rem}.help-grid,.summary,.prep{grid-template-columns:1fr}.choices,.choices.two{grid-template-columns:1fr}.body{padding:26px 18px 20px}.shell-top,.controls{padding:16px 18px}.controls{flex-direction:column-reverse}.back,.next{width:100%}.nav-actions>a:not(.btn){display:none}.btn{width:100%}.nav .btn{width:auto}}
 </style>
 </head>
 <body>
+<noscript data-sbi-meta-pixel><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1709029086421401&ev=PageView&noscript=1"></noscript>
 <header class="topbar">
   <div class="container nav">
     <a class="brand" href="/" aria-label="Return to home"><img src="/axia%20logo.png?v=5" alt="Axia by Qcells logo"></a>
@@ -133,8 +168,30 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
 <script>
 function eventId(n){return n+"_"+Date.now()+"_"+Math.random().toString(36).slice(2)}
 function safeEventPart(value){return String(value||"").replace(/[^a-zA-Z0-9_]+/g,"_").slice(0,48)}
-function track(n,source,result){if(window.oaiq)oaiq("measure","custom",{type:"custom"},{custom_event_name:n,event_id:eventId(n+"_"+safeEventPart(window.sbiVariant)+"_"+safeEventPart(source)+"_"+safeEventPart(result))})}
-document.querySelectorAll(".booking-link").forEach(a=>a.addEventListener("click",()=>track("calendar_booking_clicked",a.dataset.track||"booking_link",state.resultType)));
+function trackMetaQuickCheck(name,source,result){
+  if(!window.fbq || window.sbiMetaPixelId==="META_PIXEL_ID") return;
+  var resultPart=result||state.resultType||"";
+  var params={
+    content_category:"SMUD battery quick check",
+    content_name:"SMUD Battery Quick Check",
+    source:source||"unknown",
+    result_type:resultPart,
+    variant:window.sbiVariant||"default"
+  };
+  var eventID=eventId("meta_"+name+"_"+safeEventPart(window.sbiVariant)+"_"+safeEventPart(source)+"_"+safeEventPart(resultPart));
+  if(name==="qualification_completed")fbq("track","Lead",params,{eventID:eventID});
+  else if(name==="qualification_started")fbq("trackCustom","QualificationStarted",params,{eventID:eventID});
+  else if(name==="calendar_booking_clicked")fbq("trackCustom","BookingIntent",params,{eventID:eventID});
+  else if(name==="phone_call_clicked")fbq("track","Contact",params,{eventID:eventID});
+}
+function track(n,source,result){
+  if(window.oaiq){
+    oaiq("measure","custom",{type:"custom"},{custom_event_name:n,event_id:eventId(n+"_"+safeEventPart(window.sbiVariant)+"_"+safeEventPart(source)+"_"+safeEventPart(result))});
+  }
+  trackMetaQuickCheck(n,source,result);
+}
+function bookingHandoffUrl(sourceName){const keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","message"];const source=new URLSearchParams(location.search);const url=new URL("book.html",location.href);keys.forEach(key=>{const value=source.get(key);if(value)url.searchParams.set(key,value)});url.searchParams.set("source",sourceName||"booking_link");return url.pathname+url.search}
+document.querySelectorAll(".booking-link").forEach(a=>{a.href=bookingHandoffUrl(a.dataset.track||"booking_link");a.addEventListener("click",()=>track("calendar_booking_clicked",a.dataset.track||"booking_link",state.resultType))});
 document.querySelectorAll(".phone-link").forEach(a=>a.addEventListener("click",()=>track("phone_call_clicked",a.dataset.track||"phone_link",state.resultType)));
 const state={step:1,location:"",homeowner:"",utility:"",bill:200,solar:"",interest:"",complete:false,resultType:""};
 const steps=[...document.querySelectorAll(".step")],dots=[...document.querySelectorAll(".dot")],back=document.getElementById("back"),next=document.getElementById("next"),error=document.getElementById("error"),locationField=document.getElementById("location"),range=document.getElementById("billRange"),display=document.getElementById("billDisplay");
