@@ -1,0 +1,50 @@
+name: Apply Meta conversion tracking
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  apply-meta-tracking:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Apply tracking patch
+        run: |
+          set -euo pipefail
+          PIXEL_ID="1709029086421401"
+          PATCH_URL="https://raw.githubusercontent.com/lucasburnham/sacramentobatteryincentive/codex/meta-conversion-tracking/meta-conversion-tracking.patch"
+          BOOK_URL="https://raw.githubusercontent.com/lucasburnham/sacramentobatteryincentive/codex/meta-conversion-tracking/book.html"
+          curl -fsSL "$PATCH_URL" -o /tmp/meta-conversion-tracking.patch
+          curl -fsSL "$BOOK_URL" -o /tmp/book.html
+          python3 - <<'PY'
+          from pathlib import Path
+          pixel_id = "1709029086421401"
+          for file_path in (Path("/tmp/meta-conversion-tracking.patch"), Path("/tmp/book.html")):
+              text = file_path.read_text()
+              text = text.replace('window.SBI_META_PIXEL_ID || "META_PIXEL_ID"', f'window.SBI_META_PIXEL_ID || "{pixel_id}"')
+              text = text.replace('tr?id=META_PIXEL_ID', f'tr?id={pixel_id}')
+              file_path.write_text(text)
+          PY
+          grep -q "$PIXEL_ID" /tmp/meta-conversion-tracking.patch
+          grep -q "$PIXEL_ID" /tmp/book.html
+          git apply --check /tmp/meta-conversion-tracking.patch
+          git apply /tmp/meta-conversion-tracking.patch
+          cp /tmp/book.html book.html
+          rm -f .github/workflows/apply-meta-conversion.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html quick-check.html book.html .github/workflows/apply-meta-conversion.yml
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Add Meta conversion tracking"
+          git push
