@@ -9,11 +9,11 @@
     if(source)url.searchParams.set('source',source);
     return url.pathname+url.search;
   }
+  function cleanText(value){return String(value||'').replace(/\s+/g,' ').trim()}
   function addStructuredData(){
     var canonical=document.querySelector('link[rel="canonical"]');
     var pageUrl=canonical?canonical.href:location.href.split('#')[0];
-    var title=(document.querySelector('h1')||{}).textContent||document.title||'Sacramento Battery Incentive';
-    title=title.replace(/\s+/g,' ').trim();
+    var title=cleanText((document.querySelector('h1')||{}).textContent)||document.title||'Sacramento Battery Incentive';
     var data={
       '@context':'https://schema.org',
       '@graph':[
@@ -30,10 +30,21 @@
     script.text=JSON.stringify(data);
     document.head.appendChild(script);
   }
+  function addDescriptiveLinkLabels(){
+    document.querySelectorAll('a').forEach(function(a){
+      var text=cleanText(a.textContent).toLowerCase();
+      if(text!=='read more'&&text!=='learn more')return;
+      var scope=a.closest('article,.card,li,section,div');
+      var heading=scope&&scope.querySelector('h1,h2,h3,h4');
+      var headingText=cleanText(heading&&heading.textContent);
+      if(headingText)a.setAttribute('aria-label',cleanText(a.textContent)+' about '+headingText);
+    });
+  }
   var msg=(new URLSearchParams(location.search).get('message')||document.body.dataset.message||'organic').toLowerCase();
   window.sbiVariant=msg.replace(/[^a-z0-9_]+/g,'_').slice(0,48)||'organic';
   window.sbiPageSlug=document.body.dataset.page||'';
   addStructuredData();
+  addDescriptiveLinkLabels();
   (function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)})(window,document,'script','https://bzrcdn.openai.com/sdk/oaiq.min.js');
   if(window.oaiq){oaiq('init',{pixelId:'RxXCMNBMFuUL7hstTXrvD9',debug:false});oaiq('measure','page_viewed',{type:'contents',contents:[{id:'smud_seo_'+safe(window.sbiPageSlug)+'_'+window.sbiVariant,name:document.title+' - '+window.sbiVariant,content_type:'page'}]},{event_id:eid('seo_page_viewed_'+safe(window.sbiPageSlug)+'_'+window.sbiVariant)})}
   (function(){
