@@ -1,11 +1,11 @@
 # Sacramento Battery Incentive
 
-Sacramento Battery Incentive is a customer-facing information and appointment page for Axia by Qcells solar and battery reviews in the Sacramento, California area.
+Sacramento Battery Incentive is a customer-facing information and appointment website for Axia by Qcells solar and battery reviews in SMUD territory around Sacramento, California.
 
-The site helps Sacramento-area SMUD homeowners:
+The site helps SMUD homeowners:
 
 - Check whether solar plus home battery storage is worth a closer look.
-- Understand that SMUD currently lists battery storage incentives up to $10,000 per household, subject to SMUD program rules and final approval.
+- Review SMUD battery incentive timing, Solar and Storage Rate questions, backup-power priorities, and existing-solar storage options.
 - Book a free in-home visit with Axia by Qcells.
 
 Important distinction:
@@ -16,6 +16,20 @@ Primary pages:
 
 - Home: https://sacramentobatteryincentive.com/
 - Quick check: https://sacramentobatteryincentive.com/quick-check.html
+- SMUD battery incentive guide: https://sacramentobatteryincentive.com/smud-battery-incentive.html
+- SMUD Powerwall incentive review: https://sacramentobatteryincentive.com/smud-powerwall-incentive.html
+- Add battery to existing solar: https://sacramentobatteryincentive.com/add-battery-to-existing-solar.html
+- Sacramento solar battery storage: https://sacramentobatteryincentive.com/solar-battery-storage-sacramento.html
+- Battery backup Sacramento: https://sacramentobatteryincentive.com/battery-backup-sacramento.html
+- SMUD Solar and Storage Rate: https://sacramentobatteryincentive.com/smud-solar-and-storage-rate.html
+- Sacramento city page: https://sacramentobatteryincentive.com/sacramento-smud-battery-incentive.html
+- Elk Grove city page: https://sacramentobatteryincentive.com/elk-grove-smud-battery-incentive.html
+- Rancho Cordova city page: https://sacramentobatteryincentive.com/rancho-cordova-smud-battery-incentive.html
+- Citrus Heights city page: https://sacramentobatteryincentive.com/citrus-heights-smud-battery-incentive.html
+- Carmichael city page: https://sacramentobatteryincentive.com/carmichael-smud-battery-incentive.html
+- Folsom city page: https://sacramentobatteryincentive.com/folsom-smud-battery-incentive.html
+- Fair Oaks city page: https://sacramentobatteryincentive.com/fair-oaks-smud-battery-incentive.html
+- Orangevale city page: https://sacramentobatteryincentive.com/orangevale-smud-battery-incentive.html
 - Privacy policy: https://sacramentobatteryincentive.com/privacy-policy.html
 
 Official references:
@@ -27,4 +41,4 @@ Official references:
 Contact:
 
 - Phone: 385-777-9692
-- Booking: https://calendar.app.google/oNAhhCBMu13PSRtc7
+- Booking handoff: https://sacramentobatteryincentive.com/book.html
