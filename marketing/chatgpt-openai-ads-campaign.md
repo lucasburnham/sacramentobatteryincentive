@@ -4,9 +4,11 @@
 
 Turn Sacramento-area SMUD homeowner interest into free in-home solar plus battery appointments for Axia by Qcells.
 
-Primary conversion: `calendar_booking_clicked`
+Primary live conversion: `calendar_booking_clicked`
 
-Secondary signals: `quick_check_clicked`, `qualification_started`, `qualification_completed`, `phone_call_clicked`
+Post-deploy standard conversion: `appointment_scheduled`
+
+Secondary signals: `calendar_booking_clicked`, `quick_check_clicked`, `qualification_started`, `qualification_completed`, `phone_call_clicked`
 
 ## Live Site Integration
 
@@ -19,6 +21,10 @@ The homepage now supports customer-facing ad messages through the `message` URL 
 - `message=no_contact` emphasizes the no-contact quick check.
 
 The homepage also carries current UTM parameters into the quick-check link so page visits, quick-check starts, quick-check completions, booking clicks, and phone clicks can be compared by ad variant.
+
+The live OpenAI Ads campaign should optimize for `calendar_booking_clicked` on the Sacramento Battery Incentive Pixel because the current live site already fires that event when a visitor clicks a calendar-booking link. The prepared site patch also emits the standard `appointment_scheduled` event for the same booking clicks; once deployed, that standard event can become the primary campaign conversion while `calendar_booking_clicked` remains a secondary diagnostic signal.
+
+The prepared Pixel calls avoid optional event IDs because this setup does not use server-side deduplication yet; that keeps the browser events simple and avoids invalid-option warnings.
 
 ## Week 1 Launch Tests
 
