@@ -26,7 +26,7 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
     <a class="brand" href="/" aria-label="Return to home"><img src="/axia%20logo.png?v=5" alt="Axia by Qcells logo"></a>
     <div class="nav-actions">
       <a href="/">Main page</a>
-      <a class="btn booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="nav_book">Book a free visit</a>
+      <a class="btn booking-link" href="/book.html" data-track="nav_book">Book a free visit</a>
     </div>
   </div>
 </header>
@@ -44,7 +44,7 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
         <span><strong>Start the quick check</strong><br><span>Get a first look before sharing contact information.</span></span>
         <span class="help-icon">01</span>
       </button>
-      <a class="help-card booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="top_direct_book">
+      <a class="help-card booking-link" href="/book.html" data-track="top_direct_book">
         <span><strong>Skip to free visit</strong><br><span>Choose an in-home visit now.</span></span>
         <span class="help-icon">02</span>
       </a>
@@ -110,7 +110,8 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
             <div><span>Main goal</span><b id="summaryInterest">-</b></div>
           </div>
           <div class="actions">
-            <a class="btn booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="result_book">Choose my visit time</a>
+            <a class="btn booking-link" href="/book.html" data-track="result_book">Choose my visit time</a>
+            <a class="btn secondary" href="/before-you-decide.html" id="beforeYouDecideLink">Before You Decide</a>
             <a class="btn secondary phone-link" href="tel:+13857779692" data-track="result_phone">Call 385-777-9692</a>
           </div>
           <div class="prep" aria-label="Visit preparation">
@@ -129,8 +130,13 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
     </section>
   </div>
 </main>
-<footer class="footer"><div class="container">Sacramento Battery Incentive · <a href="privacy-policy.html">Privacy Policy</a> · <a href="/">Main page</a></div></footer>
+<footer class="footer"><div class="container">Axia Solar Corp | CSLB #1090641 | HIS #156520 SP · <a href="privacy-policy.html">Privacy Policy</a> · <a href="/">Main page</a></div></footer>
+<script src="/assets/organic-attribution.js"></script>
 <script>
+var sbiAttributionTags=SbiAttribution.read(location.search,"quick_check");
+function handoffUrl(path){var keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","message","source"];var source=new URLSearchParams(location.search);var url=new URL(path,location.origin);keys.forEach(function(key){var value=source.get(key);if(value)url.searchParams.set(key,value)});var safe=new URL(SbiAttribution.toUrl(path,sbiAttributionTags),location.origin).searchParams;["sbi_content","sbi_entry","sbi_tool"].forEach(function(key){var value=safe.get(key);if(value)url.searchParams.set(key,value)});return url.pathname+url.search}
+document.querySelectorAll(".booking-link").forEach(function(link){link.href=handoffUrl("/book.html")});
+document.getElementById("beforeYouDecideLink").href=handoffUrl("/before-you-decide.html");
 function track(n,source,result){if(window.oaiq)oaiq("measure","custom",{type:"custom"},{custom_event_name:n})}
 function trackAppointment(source,result){if(window.oaiq)oaiq("measure","appointment_scheduled",{type:"customer_action"})}
 document.querySelectorAll(".booking-link").forEach(a=>a.addEventListener("click",()=>{const source=a.dataset.track||"booking_link";trackAppointment(source,state.resultType);track("calendar_booking_clicked",source,state.resultType)}));

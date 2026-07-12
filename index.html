@@ -183,13 +183,14 @@ footer a{color:#fff}
     <a class="logo" href="#top" aria-label="Axia by Qcells"><img src="/axia%20logo.png?v=5" alt="Axia by Qcells logo"></a>
     <nav class="links" aria-label="Primary navigation">
       <a href="quick-check.html">Quick check</a>
+      <a class="js-before-you-decide-link" href="/before-you-decide.html">Before You Decide</a>
       <a href="#why">Incentives</a>
       <a href="#photos">Photos</a>
       <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
       <a class="phone js-phone-link" href="tel:+13857779692" data-track="nav_phone">385-777-9692</a>
     </nav>
-    <a class="btn secondary js-booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="nav_book">Book a free visit</a>
+    <a class="btn secondary js-booking-link" href="/book.html" data-track="nav_book">Book a free visit</a>
   </div>
 </header>
 <main id="top">
@@ -201,7 +202,7 @@ footer a{color:#fff}
         <p class="subhead" id="heroSubhead">SMUD currently lists home battery incentives up to $10,000 per household. Axia by Qcells can help you review solar, battery backup, and your current SMUD bill in a free in-home visit.</p>
         <div class="actions">
           <a class="btn gold js-quick-check-link" id="heroQuickCta" href="quick-check.html" data-track="hero_quick_check">Start the 2-minute check</a>
-          <a class="btn secondary js-booking-link" id="heroBookCta" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="hero_book">Book my free visit</a>
+          <a class="btn secondary js-booking-link" id="heroBookCta" href="/book.html" data-track="hero_book">Book my free visit</a>
         </div>
         <p class="note">The quick check does not ask for your name, phone, or email.</p>
         <div class="metrics" aria-label="Program highlights">
@@ -236,6 +237,19 @@ footer a{color:#fff}
         <div>
           <a class="btn blue full js-quick-check-link" href="quick-check.html" data-track="promo_quick_check">Start the quick check</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick" aria-labelledby="before-you-decide-title">
+    <div class="container">
+      <div class="quick-box">
+        <div>
+          <span class="eyebrow gold">Prepare first</span>
+          <h2 id="before-you-decide-title">Before You Decide</h2>
+          <p class="muted" style="margin-top:12px">Build neutral questions for a proposal or a bill review before you choose your next step.</p>
+        </div>
+        <div><a class="btn blue full js-before-you-decide-link" href="/before-you-decide.html" data-track="before_you_decide">Prepare my questions</a></div>
       </div>
     </div>
   </section>
@@ -327,7 +341,7 @@ footer a{color:#fff}
           <div class="booking-point"><span class="check">&#10003;</span><span>Solar and battery review for SMUD homeowners.</span></div>
           <div class="booking-point"><span class="check">&#10003;</span><span>No obligation.</span></div>
         </div>
-        <a class="btn full js-booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="booking_card_book">Choose my visit time</a>
+        <a class="btn full js-booking-link" href="/book.html" data-track="booking_card_book">Choose my visit time</a>
         <p style="text-align:center;margin-bottom:0">Prefer to speak first? <a class="js-phone-link" href="tel:+13857779692" data-track="booking_phone" style="color:var(--teal);font-weight:900">Call 385-777-9692</a>.</p>
       </div>
     </div>
@@ -368,7 +382,7 @@ footer a{color:#fff}
 </main>
 <footer>
   <div class="container">
-    <span>&copy; <span id="year"></span> Sacramento Battery Incentive.</span>
+    <span>Axia Solar Corp | CSLB #1090641 | HIS #156520 SP</span>
     <span class="footer-links">
       <a href="quick-check.html">Quick check</a>
       <a href="#reviews">Reviews</a>
@@ -381,10 +395,10 @@ footer a{color:#fff}
 </footer>
 <div class="mobile-sticky" aria-label="Mobile booking actions">
   <a class="btn secondary js-phone-link" href="tel:+13857779692" data-track="mobile_phone">Call</a>
-  <a class="btn js-booking-link" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" target="_blank" rel="noopener" data-track="mobile_book">Book free visit</a>
+  <a class="btn js-booking-link" href="/book.html" data-track="mobile_book">Book free visit</a>
 </div>
+<script src="/assets/organic-attribution.js"></script>
 <script>
-document.getElementById("year").textContent=new Date().getFullYear();
 var variantKey=(window.sbiVariant||"default").toLowerCase();
 if(variantKey.indexOf("backup")>-1)variantKey="backup";
 else if(variantKey.indexOf("existing")>-1||variantKey.indexOf("solar_owner")>-1)variantKey="existing_solar";
@@ -429,14 +443,19 @@ if(variants[variantKey]){
   document.getElementById("heroQuickCta").textContent=variants[variantKey].quick;
   document.getElementById("heroBookCta").textContent=variants[variantKey].book;
 }
+var sbiAttributionTags=SbiAttribution.read(location.search,"home");
 function withCurrentParams(href){
-  var keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","message"];
+  var keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","message","source"];
   var source=new URLSearchParams(location.search);
   var url=new URL(href,location.href);
   keys.forEach(function(key){var value=source.get(key);if(value)url.searchParams.set(key,value)});
+  var safeAttribution=new URL(SbiAttribution.toUrl(url.pathname,sbiAttributionTags),location.origin).searchParams;
+  ["sbi_content","sbi_entry","sbi_tool"].forEach(function(key){var value=safeAttribution.get(key);if(value)url.searchParams.set(key,value)});
   return url.pathname+url.search+url.hash;
 }
 document.querySelectorAll(".js-quick-check-link").forEach(function(link){link.href=withCurrentParams(link.getAttribute("href"))});
+document.querySelectorAll(".js-booking-link").forEach(function(link){link.href=withCurrentParams("/book.html")});
+document.querySelectorAll(".js-before-you-decide-link").forEach(function(link){link.href=withCurrentParams(SbiAttribution.toUrl("/before-you-decide.html",sbiAttributionTags))});
 function trackCustom(name,source){if(window.oaiq){oaiq("measure","custom",{type:"custom"},{custom_event_name:name})}}
 function trackAppointment(source){if(window.oaiq){oaiq("measure","appointment_scheduled",{type:"customer_action"})}}
 document.querySelectorAll(".js-booking-link").forEach(function(link){link.addEventListener("click",function(){var source=link.dataset.track||"booking_link";trackAppointment(source);trackCustom("calendar_booking_clicked",source)})});
