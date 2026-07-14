@@ -2,6 +2,7 @@
   'use strict';
 
   var CONTENT_PATTERN = /^C-\d{8}-\d{3}$/;
+  var CLICK_REFERENCE_PATTERN = /^[A-Za-z0-9._~-]{1,256}$/;
   var ENTRIES = Object.freeze({ organic: true, paid: true, seo: true, direct: true });
   var TOOLS = Object.freeze({ preflight: true, bill_decoder: true, quick_check: true });
   var PAID_MEDIA = Object.freeze({
@@ -11,6 +12,7 @@
     cpv: true,
     ppc: true,
     paid: true,
+    paid_ai: true,
     paid_search: true,
     paid_social: true,
     display: true,
@@ -30,6 +32,10 @@
     return typeof value === 'string' && TOOLS[value] ? value : null;
   }
 
+  function validClickReference(value) {
+    return typeof value === 'string' && CLICK_REFERENCE_PATTERN.test(value) ? value : null;
+  }
+
   function sanitize(input) {
     var tags = {};
     if (!input || typeof input !== 'object') return tags;
@@ -37,9 +43,11 @@
     var content = validContent(input.sbi_content);
     var entry = validEntry(input.sbi_entry);
     var tool = validTool(input.sbi_tool);
+    var clickReference = validClickReference(input.oppref);
     if (content) tags.sbi_content = content;
     if (entry) tags.sbi_entry = entry;
     if (tool) tags.sbi_tool = tool;
+    if (clickReference) tags.oppref = clickReference;
     return tags;
   }
 
@@ -73,7 +81,8 @@
     var tags = sanitize({
       sbi_content: params.get('sbi_content') || stored.sbi_content,
       sbi_entry: params.get('sbi_entry') || stored.sbi_entry,
-      sbi_tool: params.get('sbi_tool') || stored.sbi_tool
+      sbi_tool: params.get('sbi_tool') || stored.sbi_tool,
+      oppref: params.get('oppref') || stored.oppref
     });
     var medium = (params.get('utm_medium') || '').toLowerCase();
     var requestedEntry = params.get('sbi_entry');
@@ -99,7 +108,12 @@
   }
 
   function eventProperties(tags) {
-    return sanitize(tags);
+    var safeTags = sanitize(tags);
+    var properties = {};
+    ['sbi_content', 'sbi_entry', 'sbi_tool'].forEach(function (key) {
+      if (safeTags[key]) properties[key] = safeTags[key];
+    });
+    return properties;
   }
 
   window.SbiAttribution = Object.freeze({

@@ -42,6 +42,34 @@ test('read preserves a valid content ID and approved tags', () => {
   assert.deepEqual(JSON.parse(values.get('sbi_anonymous_attribution')), tags);
 });
 
+test('read preserves a valid OpenAI click reference for downstream attribution', () => {
+  const { api, values } = loadHelper();
+  const tags = plain(api.read(
+    '?utm_medium=paid_ai&oppref=opp_AbC-123._~&sbi_tool=quick_check',
+    'quick_check'
+  ));
+
+  assert.deepEqual(tags, {
+    sbi_entry: 'paid',
+    sbi_tool: 'quick_check',
+    oppref: 'opp_AbC-123._~'
+  });
+  assert.equal(JSON.parse(values.get('sbi_anonymous_attribution')).oppref, 'opp_AbC-123._~');
+});
+
+test('read rejects malformed and oversized OpenAI click references', () => {
+  const { api } = loadHelper();
+
+  assert.deepEqual(
+    plain(api.read('?oppref=contains%20spaces', 'home')),
+    { sbi_entry: 'direct' }
+  );
+  assert.deepEqual(
+    plain(api.read('?oppref=' + 'a'.repeat(257), 'home')),
+    { sbi_entry: 'direct' }
+  );
+});
+
 test('read rejects malformed content IDs and unknown enum values', () => {
   const { api } = loadHelper();
   const tags = plain(api.read(
@@ -91,6 +119,19 @@ test('toUrl copies only validated attribution tags into a relative URL', () => {
   }
 });
 
+test('toUrl forwards a validated OpenAI click reference', () => {
+  const { api } = loadHelper();
+
+  assert.equal(
+    api.toUrl('/book.html', {
+      sbi_entry: 'paid',
+      oppref: 'opp_AbC-123._~',
+      email: 'private@example.test'
+    }),
+    '/book.html?sbi_entry=paid&oppref=opp_AbC-123._%7E'
+  );
+});
+
 test('toUrl discards caller query strings and hash fragments', () => {
   const { api } = loadHelper();
   assert.equal(
@@ -110,6 +151,7 @@ test('eventProperties returns only validated non-identifying tags', () => {
       sbi_content: 'C-20260712-001',
       sbi_entry: 'organic',
       sbi_tool: 'bill_decoder',
+      oppref: 'opp_AbC-123._~',
       bill: '999',
       zip: '95814',
       referrer: 'https://bad.test'

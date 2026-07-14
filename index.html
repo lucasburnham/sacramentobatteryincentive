@@ -199,7 +199,7 @@ footer a{color:#fff}
       <div>
         <span class="eyebrow">Sacramento-area SMUD homeowners</span>
         <h1 id="heroHeadline">Check your SMUD battery incentive options.</h1>
-        <p class="subhead" id="heroSubhead">SMUD currently lists home battery incentives up to $10,000 per household. Axia by Qcells can help you review solar, battery backup, and your current SMUD bill in a free in-home visit.</p>
+        <p class="subhead" id="heroSubhead">SMUD lists a one-time enrollment incentive up to $10,000 for eligible new battery systems. Eligibility and availability apply. Axia by Qcells is not SMUD.</p>
         <div class="actions">
           <a class="btn gold js-quick-check-link" id="heroQuickCta" href="quick-check.html" data-track="hero_quick_check">Start the 2-minute check</a>
           <a class="btn secondary js-booking-link" id="heroBookCta" href="/book.html" data-track="hero_book">Book my free visit</a>
@@ -432,7 +432,7 @@ var variants={
   },
   incentive:{
     headline:"Check your SMUD battery incentive options.",
-    subhead:"SMUD currently lists home battery incentives up to $10,000 per household. Axia by Qcells can review solar, battery backup, and your current SMUD bill in a free in-home visit.",
+    subhead:"SMUD lists a one-time enrollment incentive up to $10,000 for eligible new battery systems. Eligibility and availability apply. Axia by Qcells is not SMUD.",
     quick:"Start the 2-minute check",
     book:"Book my free visit"
   }
@@ -450,15 +450,14 @@ function withCurrentParams(href){
   var url=new URL(href,location.href);
   keys.forEach(function(key){var value=source.get(key);if(value)url.searchParams.set(key,value)});
   var safeAttribution=new URL(SbiAttribution.toUrl(url.pathname,sbiAttributionTags),location.origin).searchParams;
-  ["sbi_content","sbi_entry","sbi_tool"].forEach(function(key){var value=safeAttribution.get(key);if(value)url.searchParams.set(key,value)});
+  ["sbi_content","sbi_entry","sbi_tool","oppref"].forEach(function(key){var value=safeAttribution.get(key);if(value)url.searchParams.set(key,value)});
   return url.pathname+url.search+url.hash;
 }
 document.querySelectorAll(".js-quick-check-link").forEach(function(link){link.href=withCurrentParams(link.getAttribute("href"))});
 document.querySelectorAll(".js-booking-link").forEach(function(link){link.href=withCurrentParams("/book.html")});
 document.querySelectorAll(".js-before-you-decide-link").forEach(function(link){link.href=withCurrentParams(SbiAttribution.toUrl("/before-you-decide.html",sbiAttributionTags))});
 function trackCustom(name,source){if(window.oaiq){oaiq("measure","custom",{type:"custom"},{custom_event_name:name})}}
-function trackAppointment(source){if(window.oaiq){oaiq("measure","appointment_scheduled",{type:"customer_action"})}}
-document.querySelectorAll(".js-booking-link").forEach(function(link){link.addEventListener("click",function(){var source=link.dataset.track||"booking_link";trackAppointment(source);trackCustom("calendar_booking_clicked",source)})});
+document.querySelectorAll(".js-booking-link").forEach(function(link){link.addEventListener("click",function(){var source=link.dataset.track||"booking_link";trackCustom("calendar_booking_clicked",source)})});
 document.querySelectorAll(".js-phone-link").forEach(function(link){link.addEventListener("click",function(){trackCustom("phone_call_clicked",link.dataset.track||"phone_link")})});
 document.querySelectorAll(".js-quick-check-link").forEach(function(link){link.addEventListener("click",function(){trackCustom("quick_check_clicked",link.dataset.track||"quick_check_link")})});
 </script>

@@ -134,12 +134,11 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
 <script src="/assets/organic-attribution.js"></script>
 <script>
 var sbiAttributionTags=SbiAttribution.read(location.search,"quick_check");
-function handoffUrl(path){var keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","message","source"];var source=new URLSearchParams(location.search);var url=new URL(path,location.origin);keys.forEach(function(key){var value=source.get(key);if(value)url.searchParams.set(key,value)});var safe=new URL(SbiAttribution.toUrl(path,sbiAttributionTags),location.origin).searchParams;["sbi_content","sbi_entry","sbi_tool"].forEach(function(key){var value=safe.get(key);if(value)url.searchParams.set(key,value)});return url.pathname+url.search}
+function handoffUrl(path){var keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","message","source"];var source=new URLSearchParams(location.search);var url=new URL(path,location.origin);keys.forEach(function(key){var value=source.get(key);if(value)url.searchParams.set(key,value)});var safe=new URL(SbiAttribution.toUrl(path,sbiAttributionTags),location.origin).searchParams;["sbi_content","sbi_entry","sbi_tool","oppref"].forEach(function(key){var value=safe.get(key);if(value)url.searchParams.set(key,value)});return url.pathname+url.search}
 document.querySelectorAll(".booking-link").forEach(function(link){link.href=handoffUrl("/book.html")});
 document.getElementById("beforeYouDecideLink").href=handoffUrl("/before-you-decide.html");
 function track(n,source,result){if(window.oaiq)oaiq("measure","custom",{type:"custom"},{custom_event_name:n})}
-function trackAppointment(source,result){if(window.oaiq)oaiq("measure","appointment_scheduled",{type:"customer_action"})}
-document.querySelectorAll(".booking-link").forEach(a=>a.addEventListener("click",()=>{const source=a.dataset.track||"booking_link";trackAppointment(source,state.resultType);track("calendar_booking_clicked",source,state.resultType)}));
+document.querySelectorAll(".booking-link").forEach(a=>a.addEventListener("click",()=>{const source=a.dataset.track||"booking_link";track("calendar_booking_clicked",source,state.resultType)}));
 document.querySelectorAll(".phone-link").forEach(a=>a.addEventListener("click",()=>track("phone_call_clicked",a.dataset.track||"phone_link",state.resultType)));
 const state={step:1,location:"",homeowner:"",utility:"",bill:200,solar:"",interest:"",complete:false,resultType:""};
 const steps=[...document.querySelectorAll(".step")],dots=[...document.querySelectorAll(".dot")],back=document.getElementById("back"),next=document.getElementById("next"),error=document.getElementById("error"),locationField=document.getElementById("location"),range=document.getElementById("billRange"),display=document.getElementById("billDisplay");

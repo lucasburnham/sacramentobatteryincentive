@@ -68,18 +68,18 @@ var source=params.get("source")||"booking_handoff";
 var variant=(params.get("message")||params.get("utm_content")||"default").replace(/[^a-zA-Z0-9_]+/g,"_").slice(0,48)||"default";
 var calendarUrl="https://calendar.app.google/oNAhhCBMu13PSRtc7";
 document.getElementById("calendarLink").href=calendarUrl;
-function fireScheduleEvent(){
+function fireBookingIntentEvent(){
   if(!window.fbq || window.sbiMetaPixelId==="META_PIXEL_ID") return;
-  var scheduleProperties={
+  var intentProperties={
     content_category:"SMUD battery booking",
     content_name:"Calendar booking handoff",
     source:source,
     variant:variant
   };
-  Object.keys(sbiAttributionProperties).forEach(function(key){scheduleProperties[key]=sbiAttributionProperties[key]});
-  fbq("track","Schedule",scheduleProperties,{eventID:window.sbiMetaEventId("meta_schedule_"+variant+"_"+source.replace(/[^a-zA-Z0-9_]+/g,"_").slice(0,48))});
+  Object.keys(sbiAttributionProperties).forEach(function(key){intentProperties[key]=sbiAttributionProperties[key]});
+  fbq("trackCustom","BookingIntent",intentProperties,{eventID:window.sbiMetaEventId("meta_booking_intent_"+variant+"_"+source.replace(/[^a-zA-Z0-9_]+/g,"_").slice(0,48))});
 }
-fireScheduleEvent();
+fireBookingIntentEvent();
 if(params.get("test_no_redirect")!=="1"){
   setTimeout(function(){location.href=calendarUrl},1200);
 }

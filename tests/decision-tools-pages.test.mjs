@@ -96,6 +96,8 @@ test('homepage exposes Before You Decide beside Quick Check and uses the booking
   assert.match(page, /querySelectorAll\("\.js-booking-link"\)\.forEach\(function\(link\)\{link\.href=withCurrentParams/);
   assert.doesNotMatch(page, /href=["']https:\/\/calendar\.app\.google\/oNAhhCBMu13PSRtc7/);
   assert.match(page, /href=["']\/book\.html/);
+  assert.doesNotMatch(page, /appointment_scheduled/);
+  assert.match(page, /["']sbi_content["'],["']sbi_entry["'],["']sbi_tool["'],["']oppref["']/);
 });
 
 test('homepage does not dereference the removed year element before wiring handoffs', () => {
@@ -135,14 +137,18 @@ test('Quick Check keeps its qualification state machine and adds sanitized decis
   assert.match(page, /["']utm_source["'],["']utm_medium["'],["']utm_campaign["'],["']utm_content["'],["']utm_term["'],["']message["'],["']source["']/);
   assert.match(page, /href=["']\/book\.html/);
   assert.doesNotMatch(page, /href=["']https:\/\/calendar\.app\.google\/oNAhhCBMu13PSRtc7/);
+  assert.doesNotMatch(page, /appointment_scheduled/);
+  assert.match(page, /["']sbi_content["'],["']sbi_entry["'],["']sbi_tool["'],["']oppref["']/);
 });
 
-test('booking preserves Meta Schedule handoff and Calendar destination while loading attribution', () => {
+test('booking records intent without claiming a scheduled appointment', () => {
   const page = read('../book.html');
 
   assert.match(page, /897444143385193/);
   assert.match(page, /fbq\(["']track["'],\s*["']PageView["']\)/);
-  assert.match(page, /fbq\(["']track["'],\s*["']Schedule["']/);
+  assert.match(page, /fbq\(["']trackCustom["'],\s*["']BookingIntent["']/);
+  assert.doesNotMatch(page, /fbq\(["']track["'],\s*["']Schedule["']/);
+  assert.doesNotMatch(page, /appointment_scheduled/);
   assert.match(page, /https:\/\/calendar\.app\.google\/oNAhhCBMu13PSRtc7/);
   assert.match(page, /assets\/organic-attribution\.js/);
   assert.match(page, /SbiAttribution\.read/);
@@ -158,6 +164,9 @@ test('SEO tracking retains pixels and keeps internal attribution allowlisted', (
   assert.match(source, /\/quick-check\.html/);
   assert.match(source, /\/book\.html/);
   assert.doesNotMatch(source, /searchParams\.forEach|params\.forEach/);
+  assert.match(source, /oaiq\('measure','custom',\{type:'custom'\},\{custom_event_name:n\}\)/);
+  assert.doesNotMatch(source, /custom_event_name:n,event_id/);
+  assert.doesNotMatch(source, /oaiq\([^\n]*event_id/);
 });
 
 test('SEO tracking uses a constant variant for the decision page', () => {
