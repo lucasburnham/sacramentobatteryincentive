@@ -200,4 +200,5 @@ test('only the active decision tab is initially focusable', () => {
 test('sitemap includes the decision page canonical URL', () => {
   const sitemap = read('../sitemap.xml');
   assert.match(sitemap, /https:\/\/sacramentobatteryincentive\.com\/before-you-decide\.html/);
+  assert.match(sitemap, /before-you-decide\.html<\/loc><lastmod>2026-07-24<\/lastmod>/);
 });
