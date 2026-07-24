@@ -26,7 +26,7 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
     <a class="brand" href="/" aria-label="Return to home"><img src="/axia%20logo.png?v=5" alt="Axia by Qcells logo"></a>
     <div class="nav-actions">
       <a href="/">Main page</a>
-      <a class="btn booking-link" href="/book.html" data-track="nav_book">Book a free visit</a>
+      <a class="btn booking-link" href="/book.html" data-track="nav_book">Choose a review time</a>
     </div>
   </div>
 </header>
@@ -35,7 +35,7 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
     <div class="container">
       <span class="eyebrow">No contact info required</span>
       <h1>Check your solar plus battery fit in 2 minutes.</h1>
-      <p>Answer a few simple questions. If it looks worth exploring, you can choose a free in-home visit.</p>
+      <p>Answer a few simple questions. If it looks worth exploring, you can choose an optional Bill and Usage Review time.</p>
     </div>
   </section>
   <div class="container">
@@ -45,7 +45,7 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
         <span class="help-icon">01</span>
       </button>
       <a class="help-card booking-link" href="/book.html" data-track="top_direct_book">
-        <span><strong>Skip to free visit</strong><br><span>Choose an in-home visit now.</span></span>
+        <span><strong>Skip to an optional review</strong><br><span>Choose a Bill and Usage Review time now.</span></span>
         <span class="help-icon">02</span>
       </a>
     </div>
@@ -110,12 +110,12 @@ oaiq("measure","page_viewed",{type:"contents",contents:[{id:"smud_quick_check_"+
             <div><span>Main goal</span><b id="summaryInterest">-</b></div>
           </div>
           <div class="actions">
-            <a class="btn booking-link" href="/book.html" data-track="result_book">Choose my visit time</a>
+            <a class="btn booking-link" href="/book.html" data-track="result_book">Choose a Bill and Usage Review time</a>
             <a class="btn secondary" href="/before-you-decide.html" id="beforeYouDecideLink">Before You Decide</a>
             <a class="btn secondary phone-link" href="tel:+13857779692" data-track="result_phone">Call 385-777-9692</a>
           </div>
           <div class="prep" aria-label="Visit preparation">
-            <div><strong>Bring</strong><span>A recent SMUD bill or online account access.</span></div>
+            <div><strong>Optional</strong><span>A recent bill or utility-usage view, if you have one.</span></div>
             <div><strong>Discuss</strong><span>Backup loads, evening use, and outage priorities.</span></div>
             <div><strong>Confirm</strong><span>Program fit, equipment options, and next steps.</span></div>
           </div>
@@ -138,7 +138,7 @@ function handoffUrl(path){var keys=["utm_source","utm_medium","utm_campaign","ut
 document.querySelectorAll(".booking-link").forEach(function(link){link.href=handoffUrl("/book.html")});
 document.getElementById("beforeYouDecideLink").href=handoffUrl("/before-you-decide.html");
 function track(n,source,result){if(window.oaiq)oaiq("measure","custom",{type:"custom"},{custom_event_name:n})}
-document.querySelectorAll(".booking-link").forEach(a=>a.addEventListener("click",()=>{const source=a.dataset.track||"booking_link";track("calendar_booking_clicked",source,state.resultType)}));
+document.querySelectorAll(".booking-link").forEach(a=>a.addEventListener("click",()=>{const source=a.dataset.track||"booking_link";track("calendar_handoff_clicked",source,state.resultType)}));
 document.querySelectorAll(".phone-link").forEach(a=>a.addEventListener("click",()=>track("phone_call_clicked",a.dataset.track||"phone_link",state.resultType)));
 const state={step:1,location:"",homeowner:"",utility:"",bill:200,solar:"",interest:"",complete:false,resultType:""};
 const steps=[...document.querySelectorAll(".step")],dots=[...document.querySelectorAll(".dot")],back=document.getElementById("back"),next=document.getElementById("next"),error=document.getElementById("error"),locationField=document.getElementById("location"),range=document.getElementById("billRange"),display=document.getElementById("billDisplay");
