@@ -29,6 +29,12 @@
   };
 
   var BILL_DECODER = {
+    bill_change: 'What changed between this bill and a comparable earlier period?',
+    proposal_question: 'Which written proposal assumption or term do you want to understand?',
+    home_energy_backup: 'Which home-energy or backup priority do you want to clarify?',
+    recent_bill_usage: 'If available, what does a recent bill or usage view show that you want to discuss?',
+    proposal_available: 'If available, which proposal section would you like to review?',
+    no_document_yet: 'What question would help you prepare before you have a document?',
     weather: 'Did you compare like billing periods, and did weather change?',
     ev: 'Did EV charging change during the billing period?',
     hvac: 'Did heating or cooling use change during the billing period?',
