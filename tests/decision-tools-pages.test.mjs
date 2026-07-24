@@ -124,7 +124,8 @@ test('Before You Decide header Quick Check link uses the allowlisted attribution
 
   assert.match(page, /<a[^>]+class="[^"]*js-quick-check-link[^"]*"[^>]+href="\/quick-check\.html"[^>]*>Quick Check<\/a>/);
   assert.match(page, /querySelectorAll\('\.js-quick-check-link'\)\.forEach\(function\(link\)\{link\.href=nextActionUrl\(link\.getAttribute\('href'\),activeTool\)\}\)/);
-  assert.match(page, /function updateNextActionUrls\(\)\{document\.querySelectorAll\('\[data-next-action\], \.js-quick-check-link'\)\.forEach\(function\(link\)\{link\.href=nextActionUrl\(link\.getAttribute\('href'\),activeTool\)\}\)\}/);
+  assert.match(page, /function reviewActionUrl\(tool\)\{var url=new URL\(SbiAttribution\.toUrl\('\/book\.html',tagsFor\(tool\)\),location\.origin\);return url\.pathname\+url\.search\}/);
+  assert.match(page, /document\.querySelectorAll\('\[data-review-action\]'\)\.forEach\(function\(link\)\{link\.href=reviewActionUrl\(link\.dataset\.reviewAction\)\}\)/);
 });
 
 test('Quick Check keeps its qualification state machine and adds sanitized decision and booking handoffs', () => {
@@ -141,13 +142,15 @@ test('Quick Check keeps its qualification state machine and adds sanitized decis
   assert.match(page, /["']sbi_content["'],["']sbi_entry["'],["']sbi_tool["'],["']oppref["']/);
 });
 
-test('booking records intent without claiming a scheduled appointment', () => {
+test('booking records an affirmative Calendar handoff without claiming a scheduled appointment', () => {
   const page = read('../book.html');
 
   assert.match(page, /897444143385193/);
   assert.match(page, /fbq\(["']track["'],\s*["']PageView["']\)/);
-  assert.match(page, /fbq\(["']trackCustom["'],\s*["']BookingIntent["']/);
-  assert.doesNotMatch(page, /fbq\(["']track["'],\s*["']Schedule["']/);
+  assert.match(page, /calendarLink\.addEventListener\(["']click["']/);
+  assert.match(page, /fbq\(["']track["'],\s*["']Schedule["']/);
+  assert.doesNotMatch(page, /BookingIntent/);
+  assert.doesNotMatch(page, /setTimeout\([^)]*location\.href/);
   assert.doesNotMatch(page, /appointment_scheduled/);
   assert.match(page, /https:\/\/calendar\.app\.google\/oNAhhCBMu13PSRtc7/);
   assert.match(page, /assets\/organic-attribution\.js/);
