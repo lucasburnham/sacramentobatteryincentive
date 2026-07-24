@@ -43,11 +43,24 @@
           <button class="prompt" type="button" aria-pressed="false" data-selection-key="process" data-decision-tool="preflight" data-decision-tool-event="lead_magnet_started">Project process</button>
         </div>
         <div class="action-row"><button class="btn" type="button" data-decision-tool-submit="preflight" data-decision-tool-event="lead_magnet_completed">Build my questions</button></div>
-        <div class="output-panel"><h3>Your local checklist</h3><pre class="output" data-decision-tool-output="preflight">Choose one or more topics, then build your questions.</pre><button class="btn secondary" type="button" data-copy-output="preflight">Copy checklist</button><p class="copy-status" aria-live="polite" data-copy-status="preflight"></p></div>
+        <div class="output-panel"><h3>Your local checklist</h3><pre class="output" data-decision-tool-output="preflight">Choose one or more topics, then build your questions.</pre><button class="btn secondary" type="button" data-copy-output="preflight">Copy checklist</button><p class="copy-status" aria-live="polite" data-copy-status="preflight"></p><a class="btn" href="/book.html" data-next-action="book" data-review-action="preflight" hidden>Take these questions to an optional Bill and Usage Review</a><p class="copy-status" data-review-note="preflight" hidden>Your checklist stays in this browser. You decide what, if anything, to discuss.</p></div>
       </section>
       <section class="panel" id="bill-decoder-panel" role="tabpanel" aria-labelledby="bill-decoder-tab" data-decision-tool-panel="bill_decoder" hidden>
         <h2>Choose what may have changed during the billing period.</h2>
-        <p class="panel-intro">This creates neutral questions to help you review usage patterns before drawing conclusions.</p>
+        <p class="panel-intro">This creates neutral questions to help you review usage patterns before drawing conclusions. No document is required, and no upload is requested.</p>
+        <h3>What you want to understand</h3>
+        <div class="prompt-grid">
+          <button class="prompt" type="button" aria-pressed="false" data-selection-key="bill_change" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">A bill change</button>
+          <button class="prompt" type="button" aria-pressed="false" data-selection-key="proposal_question" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">A proposal question</button>
+          <button class="prompt" type="button" aria-pressed="false" data-selection-key="home_energy_backup" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">Home energy or backup priorities</button>
+        </div>
+        <h3>What is available today</h3>
+        <div class="prompt-grid">
+          <button class="prompt" type="button" aria-pressed="false" data-selection-key="recent_bill_usage" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">A recent bill or usage view</button>
+          <button class="prompt" type="button" aria-pressed="false" data-selection-key="proposal_available" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">A proposal</button>
+          <button class="prompt" type="button" aria-pressed="false" data-selection-key="no_document_yet" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">No document yet</button>
+        </div>
+        <h3>What may have changed during the billing period</h3>
         <div class="prompt-grid">
           <button class="prompt" type="button" aria-pressed="false" data-selection-key="weather" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">Weather</button>
           <button class="prompt" type="button" aria-pressed="false" data-selection-key="ev" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">EV charging</button>
@@ -58,13 +71,12 @@
           <button class="prompt" type="button" aria-pressed="false" data-selection-key="usage_timing" data-decision-tool="bill_decoder" data-decision-tool-event="lead_magnet_started">Usage timing</button>
         </div>
         <div class="action-row"><button class="btn" type="button" data-decision-tool-submit="bill_decoder" data-decision-tool-event="lead_magnet_completed">Build my questions</button></div>
-        <div class="output-panel"><h3>Your local checklist</h3><pre class="output" data-decision-tool-output="bill_decoder">Choose one or more topics, then build your questions.</pre><button class="btn secondary" type="button" data-copy-output="bill_decoder">Copy checklist</button><p class="copy-status" aria-live="polite" data-copy-status="bill_decoder"></p></div>
+        <div class="output-panel"><h3>Your local checklist</h3><pre class="output" data-decision-tool-output="bill_decoder">Choose one or more topics, then build your questions.</pre><button class="btn secondary" type="button" data-copy-output="bill_decoder">Copy checklist</button><p class="copy-status" aria-live="polite" data-copy-status="bill_decoder"></p><a class="btn" href="/book.html" data-next-action="book" data-review-action="bill_decoder" hidden>Take these questions to an optional Bill and Usage Review</a><p class="copy-status" data-review-note="bill_decoder" hidden>Your checklist stays in this browser. You decide what, if anything, to discuss.</p></div>
       </section>
     </div>
     <p class="notice">This educational tool stays in your browser. It does not collect or send your selections, proposal details, bill details, address, or contact information.</p>
     <div class="next-steps" aria-label="Optional next actions">
       <a class="btn secondary" href="/quick-check.html" data-next-action="quick_check">Continue to Quick Check</a>
-      <a class="btn" href="/book.html" data-next-action="book">Use the booking handoff</a>
     </div>
   </section>
 </main>
@@ -80,8 +92,9 @@
   var currentParams=new URLSearchParams(location.search);
   function tagsFor(tool){return Object.assign({},tags,{sbi_tool:tool})}
   function nextActionUrl(path,tool){var url=new URL(SbiAttribution.toUrl(path,tagsFor(tool)),location.origin);legacyKeys.forEach(function(key){var value=currentParams.get(key);if(value)url.searchParams.set(key,value)});return url.pathname+url.search}
+  function reviewActionUrl(tool){var url=new URL(SbiAttribution.toUrl('/book.html',tagsFor(tool)),location.origin);return url.pathname+url.search}
   document.querySelectorAll('.js-quick-check-link').forEach(function(link){link.href=nextActionUrl(link.getAttribute('href'),activeTool)})
-  function updateNextActionUrls(){document.querySelectorAll('[data-next-action], .js-quick-check-link').forEach(function(link){link.href=nextActionUrl(link.getAttribute('href'),activeTool)})}
+  function updateNextActionUrls(){document.querySelectorAll('[data-review-action]').forEach(function(link){link.href=reviewActionUrl(link.dataset.reviewAction)});document.querySelectorAll('.js-quick-check-link').forEach(function(link){link.href=nextActionUrl(link.getAttribute('href'),activeTool)})}
   function setActive(tool){
     activeTool=tool;
     document.querySelectorAll('[data-tool-tab]').forEach(function(tab){var selected=tab.dataset.toolTab===tool;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1});
@@ -89,7 +102,8 @@
     updateNextActionUrls();
   }
   document.querySelectorAll('[data-tool-tab]').forEach(function(tab){tab.addEventListener('click',function(){setActive(tab.dataset.toolTab)});tab.addEventListener('keydown',function(event){if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;var tabs=Array.from(document.querySelectorAll('[data-tool-tab]'));var index=tabs.indexOf(tab);var next=tabs[(index+(event.key==='ArrowRight'?1:tabs.length-1))%tabs.length];next.focus();setActive(next.dataset.toolTab)})});
-  document.querySelectorAll('[data-decision-tool-panel]').forEach(function(panel){var tool=panel.dataset.decisionToolPanel;SbiDecisionTools.bind(panel,tagsFor(tool));panel.querySelectorAll('[data-selection-key]').forEach(function(button){button.addEventListener('click',function(){button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed')!=='true'))})})});
+  function updateBookingAction(panel){var output=panel.querySelector('[data-decision-tool-output]');var action=panel.querySelector('[data-review-action]');var note=panel.querySelector('[data-review-note]');if(!output||!action)return;var ready=output.textContent.trim().length>0&&!/^Choose one or more topics/i.test(output.textContent.trim());action.hidden=!ready;if(note)note.hidden=!ready}
+  document.querySelectorAll('[data-decision-tool-panel]').forEach(function(panel){var tool=panel.dataset.decisionToolPanel;SbiDecisionTools.bind(panel,tagsFor(tool));panel.querySelectorAll('[data-decision-tool-submit]').forEach(function(button){button.addEventListener('click',function(){updateBookingAction(panel)})});panel.querySelectorAll('[data-selection-key]').forEach(function(button){button.addEventListener('click',function(){button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed')!=='true'))})});updateBookingAction(panel)});
   document.querySelectorAll('[data-copy-output]').forEach(function(button){
     button.addEventListener('click',function(){
       var tool=button.dataset.copyOutput;
