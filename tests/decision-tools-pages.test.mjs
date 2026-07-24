@@ -42,6 +42,8 @@ test('public pages identify the contractor and privacy policy discloses anonymou
 test('Before You Decide is a no-contact decision page with neutral tool integrations', () => {
   const page = read('../before-you-decide.html');
 
+  assert.match(page, /<title>Folsom Solar &amp; Battery Proposal Checklist \| Sacramento Battery Incentive<\/title>/);
+  assert.match(page, /name="description" content="Use a no-contact Folsom solar and battery proposal checklist/);
   assert.match(page, /Proposal Preflight/);
   assert.match(page, /Bill Decoder/);
   assert.ok(page.includes(disclosure));
@@ -82,7 +84,7 @@ test('Before You Decide initializes the existing site tracking after attribution
 test('Before You Decide places the required disclosure immediately after its H1', () => {
   const page = read('../before-you-decide.html');
 
-  assert.match(page, /<h1>Before You Decide<\/h1>\s*<p class="disclosure">[\s\S]*?<\/p>\s*<p class="intro-copy">/);
+  assert.match(page, /<h1>Folsom Solar &amp; Battery Proposal Checklist<\/h1>\s*<p class="disclosure">[\s\S]*?<\/p>\s*<p class="intro-copy">/);
 });
 
 test('homepage exposes Before You Decide beside Quick Check and uses the booking handoff', () => {
