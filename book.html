@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Opening Calendar | Sacramento Battery Incentive</title>
-<meta name="description" content="Opening the calendar for a free Axia by Qcells solar and battery visit.">
+<title>Bill and Usage Review | Sacramento Battery Incentive</title>
+<meta name="description" content="Choose a time for an optional Bill and Usage Review with Axia Solar Corp.">
 <meta name="robots" content="noindex">
-<meta property="og:title" content="Opening Calendar | Sacramento Battery Incentive">
-<meta property="og:description" content="Opening the calendar for a free Axia by Qcells solar and battery visit.">
+<meta property="og:title" content="Bill and Usage Review | Sacramento Battery Incentive">
+<meta property="og:description" content="Choose a time for an optional Bill and Usage Review with Axia Solar Corp.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sacramentobatteryincentive.com/book.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Opening Calendar | Sacramento Battery Incentive">
-<meta name="twitter:description" content="Opening the calendar for a free Axia by Qcells solar and battery visit.">
+<meta name="twitter:title" content="Bill and Usage Review | Sacramento Battery Incentive">
+<meta name="twitter:description" content="Choose a time for an optional Bill and Usage Review with Axia Solar Corp.">
 <meta name="theme-color" content="#0f766e">
 <script data-sbi-meta-pixel>
 (function(){
@@ -53,35 +53,28 @@ p{color:var(--muted);margin:0 0 22px}
 <body>
 <noscript data-sbi-meta-pixel><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=897444143385193&ev=PageView&noscript=1"></noscript>
 <main class="card">
-  <span class="eyebrow">Free visit</span>
-  <h1>Opening the calendar.</h1>
-  <p>Choose a time for your free Axia by Qcells solar and battery review.</p>
-  <a class="btn" id="calendarLink" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" rel="noopener">Open calendar</a>
-  <p class="note">Axia by Qcells is not SMUD. Incentives are subject to SMUD rules and availability.</p>
+  <span class="eyebrow">Optional review</span>
+  <h1>Choose a Bill and Usage Review time.</h1>
+  <p>We can discuss usage questions, proposal questions, and homeowner goals. A recent bill or utility-usage view is helpful but optional, and no upload is required.</p>
+  <a class="btn" id="calendarLink" href="https://calendar.app.google/oNAhhCBMu13PSRtc7" rel="noopener">Continue to choose a time</a>
+  <p class="note">Axia Solar Corp is not SMUD and does not represent SMUD.</p>
   <footer><p class="note">Axia Solar Corp | CSLB #1090641 | HIS #156520 SP</p></footer>
 </main>
 <script>
-var params=new URLSearchParams(location.search);
 var sbiAttributionTags=SbiAttribution.read(location.search,"book");
 var sbiAttributionProperties=SbiAttribution.eventProperties(sbiAttributionTags);
-var source=params.get("source")||"booking_handoff";
-var variant=(params.get("message")||params.get("utm_content")||"default").replace(/[^a-zA-Z0-9_]+/g,"_").slice(0,48)||"default";
 var calendarUrl="https://calendar.app.google/oNAhhCBMu13PSRtc7";
-document.getElementById("calendarLink").href=calendarUrl;
-function fireBookingIntentEvent(){
+var calendarLink=document.getElementById("calendarLink");
+calendarLink.href=calendarUrl;
+calendarLink.addEventListener("click",fireCalendarHandoffEvent);
+function fireCalendarHandoffEvent(){
   if(!window.fbq || window.sbiMetaPixelId==="META_PIXEL_ID") return;
-  var intentProperties={
-    content_category:"SMUD battery booking",
-    content_name:"Calendar booking handoff",
-    source:source,
-    variant:variant
+  var handoffProperties={
+    content_category:"Bill and Usage Review",
+    content_name:"Calendar handoff"
   };
-  Object.keys(sbiAttributionProperties).forEach(function(key){intentProperties[key]=sbiAttributionProperties[key]});
-  fbq("trackCustom","BookingIntent",intentProperties,{eventID:window.sbiMetaEventId("meta_booking_intent_"+variant+"_"+source.replace(/[^a-zA-Z0-9_]+/g,"_").slice(0,48))});
-}
-fireBookingIntentEvent();
-if(params.get("test_no_redirect")!=="1"){
-  setTimeout(function(){location.href=calendarUrl},1200);
+  Object.keys(sbiAttributionProperties).forEach(function(key){handoffProperties[key]=sbiAttributionProperties[key]});
+  fbq("track","Schedule",handoffProperties,{eventID:window.sbiMetaEventId("meta_calendar_handoff")});
 }
 </script>
 </body>
